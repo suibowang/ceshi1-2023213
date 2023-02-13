@@ -32,14 +32,14 @@ for (let img of imgs){
   }
 }
 }
-// loadImage()
+loadImage()
 
 </script>
 
 <template>
   <header>
     <div>
-      <div v-if="zhu.loadCount<100">
+      <div v-if="zhu.loadCount>=100">
         <transition :name="zhu.made">
           <component :is="tabs[currentTab]" class="tab"></component>
         </transition>
@@ -50,7 +50,7 @@ for (let img of imgs){
           </button>
         </div>
       </div>
-      <div v-if="zhu.loadCount>100">
+      <div v-if="zhu.loadCount<100">
         {{ zhu.loadCount}}
       </div>
     </div>
