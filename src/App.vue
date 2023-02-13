@@ -18,15 +18,16 @@ const tabs: any = {
 }
 function loadImage(){
   let imgs = [
-    "src//assets/img/Fitsrt.jpg",
-    "src/assets/img/Second.jpg",
-    "src/assets/img/Third.jpg",
+    "./src/assets/img/Fitsrt.jpg",
+    "./src/assets/img/Second.jpg",
+    "./src/assets/img/Third.jpg",
 ]
 for (let img of imgs){
   let image = new Image()
   image.src = img
   image.onload = ()=>{
     zhu.countNum++
+    console.log(zhu.countNum)
     zhu.loadCount = Math.floor(zhu.countNum/ imgs.length * 100)
   }
 }
