@@ -2,36 +2,56 @@
 import First from './components/First.vue'
 import Second from './components/Second.vue'
 import Third from './components/Third.vue'
-import { ref,reactive } from 'vue'
-const zhu:any = reactive ({
-  made:'fade',
+import { ref, reactive } from 'vue'
+const zhu: any = reactive({
+  made: 'fade',
+  loadCount:0,
+  countNum:0,
 
 })
-const currentTab:any = ref('First')
+const currentTab: any = ref('First')
 
-const tabs:any = {
+const tabs: any = {
   First,
   Second,
   Third
 }
+function loadImage(){
+  let imgs = [
+    "src//assets/img/Fitsrt.jpg",
+    "src/assets/img/Second.jpg",
+    "src/assets/img/Third.jpg",
+]
+for (let img of imgs){
+  let image = new Image()
+  image.src = img
+  image.onload = ()=>{
+    zhu.countNum++
+    zhu.loadCount = Math.floor(zhu.countNum/ imgs.length * 100)
+  }
+}
+}
+loadImage()
+
 </script>
 
 <template>
   <header>
     <div>
-      <transition :name="zhu.made" >
-        <component :is="tabs[currentTab]" class="tab"></component>
-      </transition>
-      <div class="button">
-      <button
-       v-for="(_, tab) in tabs"
-       :key="tab"
-       :class="['tab-button', { active: currentTab === tab }]"
-       @click="currentTab = tab"
-     >
-      {{ tab }}
-    </button>
-  </div>
+      <div v-if="zhu.loadCount>=100">
+        <transition :name="zhu.made">
+          <component :is="tabs[currentTab]" class="tab"></component>
+        </transition>
+        <div class="button">
+          <button v-for="(_, tab) in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]"
+            @click="currentTab = tab">
+            {{ tab }}
+          </button>
+        </div>
+      </div>
+      <div v-if="zhu.loadCount<100">
+        {{ zhu.loadCount}}
+      </div>
     </div>
   </header>
 
@@ -41,10 +61,11 @@ const tabs:any = {
 </template>
 
 <style scoped>
-.button{
- position: fixed;
- top: 500px;
+.button {
+  position: fixed;
+  top: 500px;
 }
+
 .tab-button {
   padding: 6px 10px;
   border-top-left-radius: 3px;
@@ -55,37 +76,48 @@ const tabs:any = {
   margin-bottom: -1px;
   margin-right: -1px;
 }
+
 .tab-button:hover {
   background: #e0e0e0;
 }
+
 .tab-button.active {
   background: #e0e0e0;
 }
-.tab{
-  width: 100vw;;
+
+.tab {
+  width: 100vw;
+  ;
   height: 100vh;
 }
 
 
-.fade-leave-active,.fade-enter-active  {
-  transition: all 0.8s 
+.fade-leave-active,
+.fade-enter-active {
+  transition: all 0.8s
 }
-.fade-enter-from{
+
+.fade-enter-from {
   transform: translateY(667px);
   opacity: 0;
 }
+
 .fade-leave-to {
   transform: translateY(-667px);
   opacity: 0;
 
 }
-.fada-leave-active,.fada-enter-active {
-  transition: all 0.8s 
+
+.fada-leave-active,
+.fada-enter-active {
+  transition: all 0.8s
 }
-.fada-enter-from{
+
+.fada-enter-from {
   transform: translateY(-667px);
   opacity: 0;
 }
+
 .fada-leave-to {
   transform: translateY(667px);
   opacity: 0;
