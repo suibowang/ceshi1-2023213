@@ -3,7 +3,6 @@ import First from './components/First.vue'
 import Second from './components/Second.vue'
 import Third from './components/Third.vue'
 import { ref, reactive } from 'vue'
-import util from './util/pub-use'
 const zhu: any = reactive({
   made: 'fade',
   loadCount:0,
@@ -17,15 +16,18 @@ const tabs: any = {
   Second,
   Third
 }
+const getImageUrl =(name:any)=>{
+  return new URL(name,import.meta.url).href
+}
 function loadImage(){
   let imgs = [
-    "util.getAssetsFile('Fitsrt.jpg')",
-    "util.getAssetsFile('Second.jpg')",
-    "util.getAssetsFile('Third.jpg')",
+    "./src/assets/img/Fitsrt.jpg",
+    "./src/assets/img/Second.jpg",
+    "./src/assets/img/Third.jpg",
 ]
 for (let img of imgs){
   let image = new Image()
-  image.src = img
+  image.src = getImageUrl(img)
   image.onload = ()=>{
     zhu.countNum++
     console.log(zhu.countNum)
