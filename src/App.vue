@@ -35,6 +35,37 @@ for (let img of imgs){
   }
 }
 }
+function swipeupAction(evenObject:any){
+        zhu.made = 'fade'
+         if(currentTab.value==='First'){
+          currentTab.value='Second'
+          console.log(1);
+         }
+         else if (currentTab.value==='Second'){
+          currentTab.value='Third'
+          console.log(2);
+         }
+         else if (currentTab.value==='Third'){
+          currentTab.value='First'
+          console.log(2);
+         };
+     }
+     function swipedownAction(evenObject:any){
+      zhu.made = 'fada'
+         if(currentTab.value==='First'){
+          currentTab.value='Third'
+          console.log(1);
+         }
+         else if (currentTab.value==='Second'){
+          currentTab.value='First'
+          console.log(2);
+         }
+         else if (currentTab.value==='Third'){
+          currentTab.value='Second'
+          console.log(2);
+         }
+         
+     }
 loadImage()
 
 </script>
@@ -44,7 +75,7 @@ loadImage()
     <div>
       <div v-if="zhu.loadCount>=100">
         <transition :name="zhu.made">
-          <component :is="tabs[currentTab]" class="tab"></component>
+          <component :is="tabs[currentTab]" class="tab" v-touch:swipeup="swipeupAction" v-touch:swipedown="swipedownAction"></component>
         </transition>
         <div class="button">
           <button v-for="(_, tab) in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]"
