@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.node.json",
-  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*","vue3-hand-mobile.d.ts"],
   "compilerOptions": {
     "composite": true,
     "types": ["node"]
