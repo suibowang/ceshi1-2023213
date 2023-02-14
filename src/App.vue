@@ -17,13 +17,13 @@ const tabs: any = {
   Third
 }
 const getImageUrl =(name:any)=>{
-  return new URL(`./assets/img/${name}`,import.meta.url).href
+  return new URL(`./assets/${name}`,import.meta.url).href
 }
 function loadImage(){
   let imgs = [
-    "Fitsrt.jpg",
-    "Second.jpg",
-    "Third.jpg",
+    "img/Fitsrt.jpg",
+    "img/Second.jpg",
+    "img/Third.jpg",
 ]
 for (let img of imgs){
   let image = new Image()
