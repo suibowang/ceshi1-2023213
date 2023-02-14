@@ -5,8 +5,8 @@ import Third from './components/Third.vue'
 import { ref, reactive } from 'vue'
 const zhu: any = reactive({
   made: 'fade',
-  loadCount:0,
-  countNum:0,
+  loadCount: 0,
+  countNum: 0,
 
 })
 const currentTab: any = ref('First')
@@ -16,56 +16,61 @@ const tabs: any = {
   Second,
   Third
 }
-const getImageUrl =(name:any)=>{
-  return new URL(`./assets/${name}`,import.meta.url).href
+const getImageUrl = (name: any) => {  //图片资源地主返回
+  return new URL(`./assets/${name}`, import.meta.url).href
 }
-function loadImage(){
+function loadImage() {  //图片资源预加载
   let imgs = [
-    "img/Fitsrt.jpg",
+    "img/FisrtImg/backgroud.jpg",
+    "img/FisrtImg/1-1text.png",
+    "img/FisrtImg/1.2text.png",
+    "img/FisrtImg/1-3text.png",
+    "img/FisrtImg/1.4liu.png",
+    "img/FisrtImg/1.5liu.png",
     "img/Second.jpg",
     "img/Third.jpg",
-]
-for (let img of imgs){
-  let image = new Image()
-  image.src = getImageUrl(img)
-  image.onload = ()=>{
-    zhu.countNum++
-    console.log(zhu.countNum)
-    zhu.loadCount = Math.floor(zhu.countNum/ imgs.length * 100)
+  ]
+  for (let img of imgs) {
+    let image = new Image()
+    image.src = getImageUrl(img)
+    image.onload = () => {
+      zhu.countNum++
+      console.log(zhu.countNum)
+      zhu.loadCount = Math.floor(zhu.countNum / imgs.length * 100)
+    }
   }
 }
+function swipeupAction(evenObject: any) {  //上滑检测
+  zhu.made = 'fade'
+  if (currentTab.value === 'First') {
+    currentTab.value = 'Second'
+    console.log(1);
+  }
+  else if (currentTab.value === 'Second') {
+    currentTab.value = 'Third'
+    console.log(2);
+  }
+  else if (currentTab.value === 'Third') {
+    currentTab.value = 'First'
+    console.log(2);
+  };
 }
-function swipeupAction(evenObject:any){
-        zhu.made = 'fade'
-         if(currentTab.value==='First'){
-          currentTab.value='Second'
-          console.log(1);
-         }
-         else if (currentTab.value==='Second'){
-          currentTab.value='Third'
-          console.log(2);
-         }
-         else if (currentTab.value==='Third'){
-          currentTab.value='First'
-          console.log(2);
-         };
-     }
-     function swipedownAction(evenObject:any){
-      zhu.made = 'fada'
-         if(currentTab.value==='First'){
-          currentTab.value='Third'
-          console.log(1);
-         }
-         else if (currentTab.value==='Second'){
-          currentTab.value='First'
-          console.log(2);
-         }
-         else if (currentTab.value==='Third'){
-          currentTab.value='Second'
-          console.log(2);
-         }
-         
-     }
+function swipedownAction(evenObject: any) {   //下滑检测
+  zhu.made = 'fada'
+  if (currentTab.value === 'First') {
+    currentTab.value = 'Third'
+    console.log(1);
+  }
+  else if (currentTab.value === 'Second') {
+    currentTab.value = 'First'
+    console.log(2);
+  }
+  else if (currentTab.value === 'Third') {
+    currentTab.value = 'Second'
+    console.log(2);
+  }
+
+}
 loadImage()
 
 </script>
@@ -73,19 +78,20 @@ loadImage()
 <template>
   <header>
     <div>
-      <div v-if="zhu.loadCount>=100">
+      <div v-if="zhu.loadCount >= 100">
         <transition :name="zhu.made">
-          <component :is="tabs[currentTab]" class="tab" v-touch:swipeup="swipeupAction" v-touch:swipedown="swipedownAction"></component>
+          <component :is="tabs[currentTab]" class="tab" v-touch:swipeup="swipeupAction"
+            v-touch:swipedown="swipedownAction"></component>
         </transition>
-        <div class="button">
+        <!-- <div class="button">
           <button v-for="(_, tab) in tabs" :key="tab" :class="['tab-button', { active: currentTab === tab }]"
             @click="currentTab = tab">
             {{ tab }}
           </button>
-        </div>
+        </div> -->
       </div>
-      <div v-if="zhu.loadCount<100">
-        {{ zhu.loadCount}}
+      <div v-if="zhu.loadCount < 100">
+        {{ zhu.loadCount }}
       </div>
     </div>
   </header>
