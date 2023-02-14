@@ -129,33 +129,33 @@ loadImage()
 
 .fade-leave-active,
 .fade-enter-active {
-  transition: all 0.8s
+  transition: all 0.8s ease
 }
 
 .fade-enter-from {
   transform: translateY(667px);
-  opacity: 0;
+  opacity: 0.1;
 }
 
 .fade-leave-to {
   transform: translateY(-667px);
-  opacity: 0;
+  opacity: 0.1;
 
 }
 
 .fada-leave-active,
 .fada-enter-active {
-  transition: all 0.8s
+  transition: all 0.8s ease
 }
 
 .fada-enter-from {
   transform: translateY(-667px);
-  opacity: 0;
+  opacity: 0.1;
 }
 
 .fada-leave-to {
   transform: translateY(667px);
-  opacity: 0;
+  opacity: 0.1;
 
 }
 </style>
