@@ -35,7 +35,7 @@ function loadImage() {  //图片资源预加载
     image.src = getImageUrl(img)
     image.onload = () => {
       zhu.countNum++
-      console.log(zhu.countNum)
+      console.log(image.src)
       zhu.loadCount = Math.floor(zhu.countNum / imgs.length * 100)
     }
   }
