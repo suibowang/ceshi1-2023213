@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.node.json",
-  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*","vue3-hand-mobile.d.ts",],
+  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*","src/vue3-hand-mobile.d.tsd.ts","postcss-px-to-viewport.d.ts"],
   "compilerOptions": {
     "composite": true,
     "types": ["node"],
