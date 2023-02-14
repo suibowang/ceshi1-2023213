@@ -18,6 +18,7 @@ import { reactive } from 'vue';
     height:100vh;
     background-position: center;
     background-size: cover;
+    position: absolute;
 }
 .text1{
     width: 234px;

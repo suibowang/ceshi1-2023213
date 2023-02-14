@@ -128,7 +128,6 @@ loadImage()
 
 .tab {
   width: 100vw;
-  ;
   height: 100vh;
 }
 
@@ -140,12 +139,12 @@ loadImage()
 
 .fade-enter-from {
   transform: translateY(667px);
-  opacity: 0.1;
+  opacity: 0;
 }
 
 .fade-leave-to {
   transform: translateY(-667px);
-  opacity: 0.1;
+  opacity: 0;
 
 }
 
@@ -156,12 +155,12 @@ loadImage()
 
 .fada-enter-from {
   transform: translateY(-667px);
-  opacity: 0.1;
+  opacity: 0;
 }
 
 .fada-leave-to {
   transform: translateY(667px);
-  opacity: 0.1;
+  opacity: 0;
 
 }
 </style>
