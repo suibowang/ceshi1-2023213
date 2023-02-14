@@ -21,9 +21,9 @@ const getImageUrl =(name:any)=>{
 }
 function loadImage(){
   let imgs = [
-    "./src/assets/img/Fitsrt.jpg",
-    "./src/assets/img/Second.jpg",
-    "./src/assets/img/Third.jpg",
+    "./assets/img/Fitsrt.jpg",
+    "./assets/img/Second.jpg",
+    "./assets/img/Third.jpg",
 ]
 for (let img of imgs){
   let image = new Image()
