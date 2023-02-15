@@ -17,6 +17,8 @@
     <img src="../assets/img/Second/2.2.8text.png" alt="" class="text1-8">
     <img src="../assets/img/Second/2.2.9text.png" alt="" class="text1-9">
     <img src="../assets/img/Second/2.2.10text.png" alt="" class="text1-10">
+    <img src="../assets/img/Second/2.3xing.png" alt="" class="xing10-1">
+    <img src="../assets/img/Second/2.4xing.png" alt="" class="xing10-2">
 </div>
 
 </template>
@@ -33,6 +35,24 @@ import { reactive } from 'vue';
     background-position: center;
     background-size: cover;
 
+}
+.xing10-1{
+  width: 310px;
+  height: 315px;
+  margin-left: 24px;
+  margin-top: 28px;
+  position: absolute;
+  animation: xing 3s ease infinite;
+  animation-fill-mode: both; //动画开始前隐藏
+}
+.xing10-2{
+  width: 276px;
+  height: 129px;
+  margin-left: 50px;
+  margin-top: 424px;
+  position: absolute;
+  animation: xing 2s ease  infinite;
+  animation-fill-mode: both; //动画开始前隐藏
 }
 .text1-1 {
   width: 105px;
@@ -235,5 +255,16 @@ import { reactive } from 'vue';
     transform: translate3d(0, 0, 0);
   }
 }
+@keyframes xing {
+    from,
+  50%,
+  to {
+    opacity: 1;
+  }
 
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
 </style>
